@@ -4,7 +4,7 @@
 ## Serial UART Quick and dirty bash script
 ## SPEED ia 115200 allways. CHnage the main.cpp otherwise
 
-    - Ad: Buy some of my sdcards:  [R_PI PRELOADED SD CARDS](https://redypis.org/) 
+[R_PI PRELOADED SD CARDS](https://redypis.org/) 
 
 
 Sample to sign in to over ttyUSB0
