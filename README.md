@@ -41,6 +41,7 @@ ttyio  device send_command  expect_string timeout <REP times, interval> <GET> <D
     * UP sends up key
     * CR sends \r
     * LF sends \n
+    * CTRLC sends Ctrl+C
     * CRLF sends \r\n
   * expect string  any string. * expectes forever or timeout.
     * when found print;s the string and exits with 0
@@ -50,6 +51,26 @@ ttyio  device send_command  expect_string timeout <REP times, interval> <GET> <D
   * DEBUG  debug on. prints between {} what sends and what receives
   * SEND sends only and exits
   
+
+Sample intrerrupt at bootloader prompt
+
+```bash
+#!/bin/bash
+PRMPT="uboot>"
+echo "reboot your board"
+./ttyio /dev/ttyUSB0 CRLF 'Press a key to' 10
+if [[ $? != 0 ]] && echo "cannot find boot loader message to intrerrupt the boot" && exit 1
+./ttyio /dev/ttyUSB0 CRLF * REP 5 30 4  # send CRLF 5 times at 30 ms no more than 4 seocnds to catch the bootloader prompt 
+./ttyio /dev/ttyUSB0 CRLF ${PRMPT} 1
+if [[ $? != 0 ]] && echo "cannot find boot loader message to intrerrupt the boot" && exit 1
+echo "got it. Start gadget mode"
+GAT=$(./ttyio /dev/ttyUSB0 "ums mmc 1" / 2 GET)
+[[ ${GAT} =~ '/' ]] && echo "got gadget mode" 
+#cancel gadget mode
+./ttyio /dev/ttyUSB0 CTRLC ${PRMPT}
+if [[ $? != 0 ]] && echo "cannot find boot prompt" && exit 1
+```
+
 
 
 
