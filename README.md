@@ -2,7 +2,7 @@
 
 
 ## Serial UART Quick and dirty bash script
-## SPEED ia 115200 allways. CHnage the main.cpp otherwise
+## SPEED ia 115200 allways. See main.cpp
 
 [R_PI PRELOADED SD CARDS](https://redypis.org/) 
 
