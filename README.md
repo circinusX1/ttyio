@@ -4,7 +4,11 @@
 ## Serial UART Quick and dirty bash script
 ## SPEED ia 115200 allways. See main.cpp
 
-[R_PI PRELOADED SD CARDS](https://redypis.org/) 
+* Software related music:
+* 
+    * [![Found this funny video](https://ghitara.com/images/local_gith.png)](https://www.youtube.com/@AIureaSonus)
+ 
+  
 
 
 Sample to sign in to over ttyUSB0
